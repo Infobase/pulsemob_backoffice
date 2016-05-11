@@ -40,7 +40,7 @@ $ bower update
 $ grunt build
 ```
 
-## 4. Setting Nginx
+## 4. Setting up Nginx
 Open *pulsemob.conf* in Nginx folder.
 ```sh
 $ vim /etc/nginx/conf.d/pulsemob.conf
@@ -53,4 +53,10 @@ location /pulsemob_backoffice {
     alias /folder/root/pulsemob_backoffice/dist;
     index index.html index.htm;
 }
+```
+
+## 5. Create backoffice administrator user
+You must manually create this user by running the following SQL code. Replace name and email values.
+```sql
+INSERT INTO backoffice_administrator(create_time, update_time, profile, name, email, active) VALUES (now(), now(), 0, '<name>', '<email>', true);
 ```
